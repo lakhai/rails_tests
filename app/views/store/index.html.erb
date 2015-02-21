@@ -1,0 +1,9 @@
+<ul>
+<% @products.each do |post| %>
+	<li>
+		<h2><%= post.name %></h2>
+		<p><%= post.thumbnail %></p>
+		<%= link_to 'Post', post, {:class => 'btn btn-info'} %>
+	</li>
+<% end %>
+</ul>

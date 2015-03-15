@@ -1,9 +1,10 @@
+<h1>Hi! You've visited the site <%= pluralize @visits, 'time' %></h1>
 <ul>
 <% @products.each do |post| %>
 	<li>
 		<h2><%= post.name %></h2>
 		<p><%= post.thumbnail %></p>
-		<%= link_to 'Post', post, {:class => 'btn btn-info'} %>
+		<%= button_to 'Add to cart', line_items_path(product_id: post.id), {:class => 'btn-warning btn'} %>
 	</li>
 <% end %>
 </ul>

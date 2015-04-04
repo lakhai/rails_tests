@@ -1,0 +1,18 @@
+<% if @cart.line_items.to_a.empty? %>
+	$('#cart').fadeOut(500, function() {
+		$(this).remove();
+		$('#items').removeClass('col-md-8').addClass('col-md-12', 500);
+	});
+	
+<% else %>
+	<% if @item.quantity != 0 %>
+		$('#<%= @item.id %> .quantity').html('<%= @item.quantity %>');
+		$('#<%= @item.id %>').css('background-color', '#5bc0de').animate({'background-color':'#ffffff'}, 1000);
+		$('#total_price').html('<%= number_to_currency(@cart.total_price) %>');
+	<% else %>
+		$('#<%= @item.id %>').fadeOut(400, function() {
+			$(this).remove();
+		});
+		$('#total_price').html('<%= number_to_currency(@cart.total_price) %>');
+	<% end %>
+<% end %>

@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Testalicious</title>
+  <title><%= @page_name ? @page_name+' - Testalicious' : 'Testalicious' %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="container-fluid header-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+					<%= link_to "Storealicious", root_path, {:class => 'btn btn-warning logo'} %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div id="items" class="col-md-<%= @cart && @cart.line_items.empty? ? "12" : "8" %>">
+		  		<%= yield %>
+		  	</div>
+		  	<% if @cart && !@cart.line_items.empty? %>
+			  	<div class="col-md-4" id="cart">
+			  		<%= render @cart %>
+			  	</div>
+			<% end %>
+	  	</div>
+	</div>
+</div>
 </body>
 </html>

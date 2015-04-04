@@ -1,0 +1,5 @@
+<% if (!@cart.line_items.empty?) %>
+$('#items').addClass('col-md-8').removeClass('col-md-12').parent().append('<div class="col-md-4" id="cart">');
+<% end %>
+$('#cart').html("<%= escape_javascript render(@cart) %>");
+$('#<%= @current_item.id %>').css('background-color', '#5bc0de').animate({'background-color':'#ffffff'}, 1000);

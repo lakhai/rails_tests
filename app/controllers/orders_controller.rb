@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_cart, only: [:show, :new]
+  before_action :set_cart, only: [:show, :new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -30,9 +30,11 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
+    @order.add_line_items_from_cart(@cart)
     respond_to do |format|
       if @order.save
+        @cart.destroy
+        session[:cart_id] = nil
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

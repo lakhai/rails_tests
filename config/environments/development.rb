@@ -35,12 +35,12 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.live.com",
     port: 587,
     domain: "storealicious.net",
     authentication: "plain",
-    user_name: "sebasalines",
-    password: "sebastianv3",
+    user_name: "webringstuff@hotmail.com",
+    password: "QWE258rty.mail",
     enable_starttls_auto: true
   }
   # Raises error for missing translations
